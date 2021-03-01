@@ -15,7 +15,7 @@ pipeline{
           stage('Compile'){
               agent any
               steps{
-                  echo 'compiling..'
+                  echo 'compiling'
                   sh 'mvn compile'
               }
           }
