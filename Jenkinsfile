@@ -50,6 +50,7 @@ pipeline{
 	  stage('make a directory and file'){
 	       agent any
 		  steps{
+		      echo ('Hello Creating File')  
 		      sh ('mkdir File1')
 		      sh ('touch file.txt')
 	       }
