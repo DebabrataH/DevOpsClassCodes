@@ -15,7 +15,7 @@ pipeline{
           stage('Compile'){
               agent any
               steps{
-                  echo 'compiling'
+                  echo 'compiling...'
                   sh 'mvn compile'
               }
           }
@@ -47,7 +47,14 @@ pipeline{
                }
            }		
           }
-          stage('Package'){
+	  stage('make a directory and file'){
+	       agent any
+		  steps{
+		      sh ('mkdir File1')
+		      sh ('touch file.txt')
+	       }
+	  }
+	  stage('Package'){
               agent any
               steps{
                   sh 'mvn package'
