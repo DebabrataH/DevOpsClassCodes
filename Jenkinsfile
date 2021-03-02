@@ -9,7 +9,7 @@ pipeline{
            stage('Checkout'){
                agent any
                steps{
-                 git 'https://github.com/Sonal0409/DevOpsClassCodes.git'
+                 git 'https://github.com/DebabrataH/DevOpsClassCodes.git'
               }
           }
           stage('Compile'){
@@ -51,8 +51,8 @@ pipeline{
 	       agent any
 		  steps{
 		      echo ('Hello Creating File')  
-		      sh ('mkdir File1')
-		      sh ('touch file.txt')
+		      sh ('mkdir File2')
+		      sh ('touch file2.txt')
 	       }
 	  }
 	  stage('Package'){
