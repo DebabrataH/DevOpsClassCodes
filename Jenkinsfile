@@ -4,29 +4,29 @@ pipeline{
         jdk 'myjava'
         maven 'mymvn'
     }
-    agent master
+    agent none
       stages{
            stage('Checkout'){
-               agent master
+               agent any
                steps{
                  git 'https://github.com/DebabrataH/DevOpsClassCodes.git'
               }
           }
           stage('Compile'){
-              agent master
+              agent {label 'Slave_MumbaiLinux'}
               steps{
                   echo 'compiling'
                   sh 'mvn compile'
               }
           }
           stage('CodeReview'){
-              agent master
+              agent any
               steps{
                   sh 'mvn pmd:pmd'
               }
           }
            stage('UnitTest'){
-               agent master
+               agent any
               steps{
                   sh 'mvn test'
               }
@@ -37,7 +37,7 @@ pipeline{
            }	
           }
            stage('MetricCheck'){
-               agent master
+               agent any
               steps{
                   sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
               }
@@ -48,7 +48,7 @@ pipeline{
            }		
           }
 	  stage('make a directory and file'){
-	       agent Slave_MumbaiLinux
+		  agent {label 'Slave_MumbaiLinux'}
 		  steps{
 		      echo ('Hello Wor')  
 		      sh ('mkdir Fil')
@@ -56,7 +56,7 @@ pipeline{
 	       }
 	  }
 	  stage('Package'){
-              agent master
+              agent {label 'Slave_MumbaiLinux'}
               steps{
                   sh 'mvn package'
               }
