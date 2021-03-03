@@ -4,29 +4,29 @@ pipeline{
         jdk 'myjava'
         maven 'mymvn'
     }
-    agent Slave_MumbaiLinux
+    agent master
       stages{
            stage('Checkout'){
-               agent Slave_MumbaiLinux
+               agent master
                steps{
                  git 'https://github.com/DebabrataH/DevOpsClassCodes.git'
               }
           }
           stage('Compile'){
-              agent any
+              agent master
               steps{
                   echo 'compiling'
                   sh 'mvn compile'
               }
           }
           stage('CodeReview'){
-              agent any
+              agent master
               steps{
                   sh 'mvn pmd:pmd'
               }
           }
            stage('UnitTest'){
-               agent any
+               agent master
               steps{
                   sh 'mvn test'
               }
@@ -56,7 +56,7 @@ pipeline{
 	       }
 	  }
 	  stage('Package'){
-              agent any
+              agent master
               steps{
                   sh 'mvn package'
               }
