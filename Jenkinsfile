@@ -37,7 +37,7 @@ pipeline{
            }	
           }
            stage('MetricCheck'){
-               agent Slave_MumbaiLinux
+               agent master
               steps{
                   sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
               }
@@ -50,9 +50,9 @@ pipeline{
 	  stage('make a directory and file'){
 	       agent Slave_MumbaiLinux
 		  steps{
-		      echo ('Hello World')  
-		      sh ('rmdir File2')
-		      sh ('rm file2.txt')
+		      echo ('Hello Wor')  
+		      sh ('mkdir Fil')
+		      sh ('touch file3.txt')
 	       }
 	  }
 	  stage('Package'){
