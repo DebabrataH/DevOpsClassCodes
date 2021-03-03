@@ -50,9 +50,9 @@ pipeline{
 	  stage('make a directory and file'){
 		  agent {label 'Slave_MumbaiLinux'}
 		  steps{
-		      echo ('Hello Wor')  
-		      sh ('mkdir Fil')
-		      sh ('touch file3.txt')
+		      echo ('Hello Wordd')  
+		      sh ('mkdir Filtt')
+		      sh ('touch file4.txt')
 	       }
 	  }
 	  stage('Package'){
