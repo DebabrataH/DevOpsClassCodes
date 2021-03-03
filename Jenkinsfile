@@ -7,7 +7,7 @@ pipeline{
     agent none
       stages{
            stage('Checkout'){
-               agent any
+               agent Linux_mumbai_AG
                steps{
                  git 'https://github.com/DebabrataH/DevOpsClassCodes.git'
               }
@@ -37,7 +37,7 @@ pipeline{
            }	
           }
            stage('MetricCheck'){
-               agent any
+               agent Linux_mumbai_AG
               steps{
                   sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
               }
@@ -48,7 +48,7 @@ pipeline{
            }		
           }
 	  stage('make a directory and file'){
-	       agent any
+	       agent Linux_mumbai_AG
 		  steps{
 		      echo ('Hello World')  
 		      sh ('rmdir File2')
