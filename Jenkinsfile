@@ -13,7 +13,7 @@ pipeline{
               }
           }
           stage('Compile'){
-              agent {label 'Slave_MumbaiLinux'}
+              agent any
               steps{
                   echo 'compiling'
                   sh 'mvn compile'
@@ -47,16 +47,8 @@ pipeline{
                }
            }		
           }
-	  stage('make a directory and file'){
-		  agent {label 'Slave_MumbaiLinux'}
-		  steps{
-		      echo ('Hello Wordd')  
-		      sh ('mkdir Filtt')
-		      sh ('touch file4.txt')
-	       }
-	  }
-	  stage('Package'){
-              agent {label 'Slave_MumbaiLinux'}
+	   stage('Package'){
+              agent any
               steps{
                   sh 'mvn package'
               }
